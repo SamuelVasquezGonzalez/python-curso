@@ -1,17 +1,18 @@
 def encriptar(texto):
     textoFinal = ''
     for letra in texto:
-        textoFinal += letra + 'x'
+        ascii = ord(letra)
+        ascii += 2
+        textoFinal += chr(ascii)
     return textoFinal
 
 
 def desencriptar(texto):
     textoFinal = ''
-    contador = 0
     for letra in texto:
-        if contador % 2 == 0:
-            textoFinal += letra
-        contador += 1
+        ascii = ord(letra)
+        ascii -= 2
+        textoFinal += chr(ascii)
     return textoFinal
 
 
@@ -41,10 +42,9 @@ respuesta = input('Presione la letra E para encriptar, o D para desencriptar')
 rutaArchivo = input('Ingrese la ruta del archivo')
 
 if respuesta == 'E' or respuesta == 'e':
+    print('Ha sido Encriptado!!')
     encriptarArchivo(rutaArchivo)
 
 if respuesta == 'D' or respuesta == 'd':
+    print('Ha sido desencriptado!!')
     desencriptarArchivo(rutaArchivo)
-
-else:
-    print('Solo presione la letra E o D')
